@@ -23,10 +23,10 @@ def grad_g(x):
 
 
 def predict(Theta1, Theta2, X):
-	""" Predict labels in a trained two layer classification network.
+	""" Predict labels in a trained three layer classification network.
 	Input:
-	  Theta1       trained weights of 1st layer (hidden_layer_size x input_layer_size+1)
-	  Theta2       trained weights of 2nd layer (num_labels x hidden_layer_size+1)
+	  Theta1       trained weights applied to 1st layer (hidden_layer_size x input_layer_size+1)
+	  Theta2       trained weights applied to 2nd layer (num_labels x hidden_layer_size+1)
 	  X            matrix of training data      (m x input_layer_size)
 	Output:     
 	  prediction   label prediction
@@ -45,7 +45,7 @@ def predict(Theta1, Theta2, X):
 
 
 def reshape(theta, input_layer_size, hidden_layer_size, num_labels):
-	""" reshape theta into Theta1 and Theta2, the two layers of our neural network """
+	""" reshape theta into Theta1 and Theta2, the weights of our neural network """
 	ncut = hidden_layer_size * (input_layer_size+1)
 	Theta1 = theta[0:ncut].reshape(hidden_layer_size, input_layer_size+1)
 	Theta2 = theta[ncut:].reshape(num_labels, hidden_layer_size+1)
@@ -53,7 +53,7 @@ def reshape(theta, input_layer_size, hidden_layer_size, num_labels):
 	
 	
 def cost_function(theta, input_layer_size, hidden_layer_size, num_labels, X, y, lmbda):
-	""" Neural net cost function for a two layer classification network.
+	""" Neural net cost function for a three layer classification network.
 	Input:
 	  theta               flattened vector of neural net model parameters
 	  input_layer_size    size of input layer
@@ -93,7 +93,7 @@ def cost_function(theta, input_layer_size, hidden_layer_size, num_labels, X, y, 
 
 
 def gradient(theta, input_layer_size, hidden_layer_size, num_labels, X, y, lmbda):
-	""" Neural net cost function gradient for a two layer classification network.
+	""" Neural net cost function gradient for a three layer classification network.
 	Input:
 	  theta               flattened vector of neural net model parameters
 	  input_layer_size    size of input layer
